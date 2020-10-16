@@ -113,7 +113,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1602367991673</Id>
 					<Name><![CDATA[selectedViewArea]]></Name>
-					<X>1100</X><Y>-360</Y>
+					<X>190</X><Y>-380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -128,7 +128,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1602531654468</Id>
 					<Name><![CDATA[foodPerRound]]></Name>
-					<X>1570</X><Y>-340</Y>
+					<X>660</X><Y>-360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -143,7 +143,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1602531654877</Id>
 					<Name><![CDATA[initialPopulation]]></Name>
-					<X>1570</X><Y>-310</Y>
+					<X>660</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -155,10 +155,112 @@
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1602800689722</Id>
+					<Name><![CDATA[actualRow]]></Name>
+					<X>1200</X><Y>-360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1602800704283</Id>
+					<Name><![CDATA[runColumn]]></Name>
+					<X>1340</X><Y>-390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1602800733455</Id>
+					<Name><![CDATA[populationColumn]]></Name>
+					<X>1340</X><Y>-270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[5]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1602800934212</Id>
+					<Name><![CDATA[sheetNumber]]></Name>
+					<X>1200</X><Y>-390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1602800972546</Id>
+					<Name><![CDATA[speedColumn]]></Name>
+					<X>1340</X><Y>-360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1602800985418</Id>
+					<Name><![CDATA[massColumn]]></Name>
+					<X>1340</X><Y>-330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[3]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1602801041999</Id>
+					<Name><![CDATA[visionColumn]]></Name>
+					<X>1340</X><Y>-300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[4]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1602531656741</Id>
-					<Name><![CDATA[speedMean]]></Name>
-					<X>1730</X><Y>-370</Y>
+					<Name><![CDATA[initialSpeedMean]]></Name>
+					<X>820</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -181,8 +283,8 @@
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1602531656754</Id>
-					<Name><![CDATA[massMean]]></Name>
-					<X>1730</X><Y>-340</Y>
+					<Name><![CDATA[initialMassMean]]></Name>
+					<X>820</X><Y>-360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -205,8 +307,8 @@
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1602531656767</Id>
-					<Name><![CDATA[visionMean]]></Name>
-					<X>1730</X><Y>-310</Y>
+					<Name><![CDATA[initialVisionMean]]></Name>
+					<X>820</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -232,10 +334,10 @@
 				<Event>
 					<Id>1599952756484</Id>
 					<Name><![CDATA[outOfFood]]></Name>
-					<X>1570</X><Y>-370</Y>
+					<X>660</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties TriggerType="condition" Mode="occuresOnce">
 						<Timeout Class="CodeUnitValue">
@@ -256,9 +358,41 @@
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</RecurrenceCode>
-						<Condition><![CDATA[this.food.size () == 0]]></Condition>
+						<Condition><![CDATA[this.food.size() == 0]]></Condition>
 					</Properties>
 					<Action><![CDATA[this.restartSimulation();]]></Action>
+				</Event>
+				<Event>
+					<Id>1602800099710</Id>
+					<Name><![CDATA[reportTime]]></Name>
+					<X>1010</X><Y>-360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1602835200000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[18000]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[setActualRow();
+writeReport();]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -267,7 +401,7 @@
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602366636985</Id>
 					<Name><![CDATA[restartSimulation]]></Name>
-					<X>1380</X><Y>-370</Y>
+					<X>470</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -283,7 +417,7 @@ this.outOfFood.restart();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602366813058</Id>
 					<Name><![CDATA[replaceFood]]></Name>
-					<X>1380</X><Y>-340</Y>
+					<X>470</X><Y>-360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -303,7 +437,7 @@ for (int i=0; i < foodPerRound; i++) {
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602366881586</Id>
 					<Name><![CDATA[removeUnfulfilled]]></Name>
-					<X>1380</X><Y>-310</Y>
+					<X>470</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -325,7 +459,7 @@ for (Blob blob : blobsToRemove) {
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602368006415</Id>
 					<Name><![CDATA[navigate]]></Name>
-					<X>1100</X><Y>-320</Y>
+					<X>190</X><Y>-340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -341,7 +475,7 @@ for (Blob blob : blobsToRemove) {
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602531655449</Id>
 					<Name><![CDATA[replicateBlobs]]></Name>
-					<X>1380</X><Y>-280</Y>
+					<X>470</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -403,7 +537,102 @@ for (Blob blob : blobsToReplicate) {
 	}
 }]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1602800163793</Id>
+					<Name><![CDATA[writeReport]]></Name>
+					<X>1010</X><Y>-330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// Write run number
+reportFile.setCellValue(
+	actualRow, 
+	sheetNumber,
+	actualRow,
+	runColumn
+);
+
+
+// Write Speed
+reportFile.setCellValue(
+	blobs.averageSpeed(),
+	sheetNumber,
+	actualRow,
+	speedColumn
+);
+
+// Write Mass
+reportFile.setCellValue(
+	blobs.averageMass(),
+	sheetNumber,
+	actualRow,
+	massColumn
+);
+
+// Write Vision
+reportFile.setCellValue(
+	blobs.averageVision(),
+	sheetNumber,
+	actualRow,
+	visionColumn
+);
+
+
+// Write Population
+reportFile.setCellValue(
+	blobs.size(),
+	sheetNumber,
+	actualRow,
+	populationColumn
+);
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1602803139564</Id>
+					<Name><![CDATA[setActualRow]]></Name>
+					<X>1010</X><Y>-300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[int lastRow = reportFile.getLastRowNum(sheetNumber);
+
+if (lastRow == 1) {
+	if (reportFile.cellExists(sheetNumber, 1, 1)) {
+		actualRow = 2;
+	}
+	else {
+		actualRow = 1;
+	}
+}
+else {
+	actualRow = lastRow + 1;
+}]]></Body>
+				</Function>
 			</Functions>
+			<Connectivity>
+				<ExcelFile>
+					<Id>1602799303248</Id>
+					<Name><![CDATA[reportFile]]></Name>
+					<X>1010</X><Y>-390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[tp]]></PackageName>
+						<ClassName><![CDATA[C:/Users/lucas/Desktop/Runs.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>true</SaveOnDispose>
+				</ExcelFile>
+			</Connectivity>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1599424741473</Id>
@@ -430,10 +659,10 @@ for (Blob blob : blobsToReplicate) {
 				<EmbeddedObject>
 					<Id>0</Id>
 					<Name><![CDATA[blobs]]></Name>
-					<X>1380</X><Y>-190</Y>
+					<X>470</X><Y>-210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<PresentationId>1599425914682</PresentationId>
 					<ActiveObjectClass>
@@ -451,7 +680,7 @@ for (Blob blob : blobsToReplicate) {
 						<Parameter>
 							<Name><![CDATA[speed]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(0.2*speedMean, speedMean)]]></Code>
+								<Code><![CDATA[normal(0.2*initialSpeedMean, initialSpeedMean)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -460,13 +689,13 @@ for (Blob blob : blobsToReplicate) {
 						<Parameter>
 							<Name><![CDATA[vision]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(0.2*visionMean, visionMean)]]></Code>
+								<Code><![CDATA[normal(0.2*initialVisionMean, initialVisionMean)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(0.2*massMean, massMean)]]></Code>
+								<Code><![CDATA[normal(0.2*initialMassMean, initialMassMean)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -549,10 +778,10 @@ for (Blob blob : blobsToReplicate) {
 				<EmbeddedObject>
 					<Id>0</Id>
 					<Name><![CDATA[food]]></Name>
-					<X>1380</X><Y>-220</Y>
+					<X>470</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<PresentationId>1599426014291</PresentationId>
 					<ActiveObjectClass>
@@ -618,7 +847,7 @@ for (Blob blob : blobsToReplicate) {
 				<EmbeddedObject>
 					<Id>1600721982060</Id>
 					<Name><![CDATA[eatable]]></Name>
-					<X>1380</X><Y>-250</Y>
+					<X>470</X><Y>-270</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1004,10 +1233,10 @@ for (Blob blob : blobsToReplicate) {
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
 					<DatasetExpression>  
-						<Title><![CDATA[Speed Mean]]></Title>
+						<Title><![CDATA[Initial Speed Mean]]></Title>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-16777216</Color>
-					<Expression2><![CDATA[speedMean]]></Expression2>
+					<Expression2><![CDATA[initialSpeedMean]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -1079,10 +1308,10 @@ for (Blob blob : blobsToReplicate) {
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
 					<DatasetExpression>  
-						<Title><![CDATA[Mass Mean]]></Title>
+						<Title><![CDATA[Intial Mass Mean]]></Title>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-16777216</Color>
-					<Expression2><![CDATA[massMean]]></Expression2>
+					<Expression2><![CDATA[initialMassMean]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -1154,10 +1383,10 @@ for (Blob blob : blobsToReplicate) {
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
 					<DatasetExpression>  
-						<Title><![CDATA[Vision Mean]]></Title>
+						<Title><![CDATA[Initial Vision Mean]]></Title>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-16777216</Color>
-					<Expression2><![CDATA[visionMean]]></Expression2>
+					<Expression2><![CDATA[initialVisionMean]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -1347,7 +1576,7 @@ for (Blob blob : blobsToReplicate) {
 						<Title><![CDATA[Population size]]></Title>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-23296</Color>
-					<Expression2><![CDATA[this.blobs.size()]]></Expression2>
+					<Expression2><![CDATA[blobs.size()]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
@@ -1363,7 +1592,7 @@ for (Blob blob : blobsToReplicate) {
 				<Group>
 					<Id>1602612960647</Id>
 					<Name><![CDATA[controlPanelGroup]]></Name>
-					<X>1080</X><Y>-390</Y>
+					<X>170</X><Y>-410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1423,7 +1652,7 @@ for (Blob blob : blobsToReplicate) {
 				<Group>
 					<Id>1602612978519</Id>
 					<Name><![CDATA[enviromentGroup]]></Name>
-					<X>1360</X><Y>-390</Y>
+					<X>450</X><Y>-410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1632,13 +1861,73 @@ for (Blob blob : blobsToReplicate) {
 			</Presentation>
 
 				</Group>
+				<Group>
+					<Id>1602799515501</Id>
+					<Name><![CDATA[reportGroup]]></Name>
+					<X>990</X><Y>-410</Y>
+					<Label><X>9.812</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1602799532127</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>560</Width>
+					<Height>323.619</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1602799530426</Id>
+					<Name><![CDATA[Report]]></Name>
+					<X>0</X><Y>-29.42</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Report]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
 			</Presentation>
 
 				</Level>
 				<EmbeddedObjectPresentation>
-					<Id>1599425914682</Id>
-					<Name><![CDATA[blobs_presentation]]></Name>
-					<X>330</X><Y>170</Y>
+					<Id>1599426014291</Id>
+					<Name><![CDATA[food_presentation]]></Name>
+					<X>340</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1655,9 +1944,9 @@ for (Blob blob : blobsToReplicate) {
 					<Longitude>0.0</Longitude>
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
-					<Id>1599426014291</Id>
-					<Name><![CDATA[food_presentation]]></Name>
-					<X>340</X><Y>120</Y>
+					<Id>1599425914682</Id>
+					<Name><![CDATA[blobs_presentation]]></Name>
+					<X>340</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1927,7 +2216,7 @@ for (Blob blob : blobsToReplicate) {
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.7]]></Code>
+							<Code><![CDATA[1]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1600023505188</Id>
@@ -1951,7 +2240,7 @@ for (Blob blob : blobsToReplicate) {
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.01]]></Code>
+							<Code><![CDATA[0.05]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1600023516017</Id>
@@ -2085,7 +2374,7 @@ for (Blob blob : blobsToReplicate) {
 	for (Blob blob : main.blobs) {
 		distance = distanceTo(blob);
 	
-		if (distance < closestDistance && this.mass * this.ratioToConsume >= blob.mass) {
+		if (distance < closestDistance && this.mass >= blob.mass * this.ratioToConsume) {
 			closestFood = blob;
 			closestDistance = distance;
 		}
@@ -2741,7 +3030,7 @@ for (Blob blob : blobsOnWay) {
 	<Database>
 		<Logging>false</Logging>
 		<AutoExport>false</AutoExport>
-		<ShutdownCompact>false</ShutdownCompact>
+		<ShutdownCompact>true</ShutdownCompact>
 		<ImportSettings>
 		</ImportSettings>
 		<ExportSettings>
@@ -2779,8 +3068,8 @@ for (Blob blob : blobsOnWay) {
 			<Name><![CDATA[Simulation]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
-			<MaximumMemory>512</MaximumMemory>
-			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<MaximumMemory>1024</MaximumMemory>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
@@ -2813,13 +3102,13 @@ for (Blob blob : blobsOnWay) {
 
 			<Parameters>			
 				<Parameter>
-					<ParameterName><![CDATA[speedMean]]></ParameterName>
+					<ParameterName><![CDATA[initialSpeedMean]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[massMean]]></ParameterName>
+					<ParameterName><![CDATA[initialMassMean]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[visionMean]]></ParameterName>
+					<ParameterName><![CDATA[initialVisionMean]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
@@ -2838,7 +3127,336 @@ for (Blob blob : blobsOnWay) {
 				<FinalTime><![CDATA[100.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
-		</SimulationExperiment>	
+		</SimulationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1599424741478">
+			<Id>1602805137257</Id>
+			<Name><![CDATA[ParametersVariation]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<MaximumMemory>512</MaximumMemory>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+
+			<Presentation>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>40</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12490271</Color>
+					<Text><![CDATA[TP : ParametersVariation]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>24</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>50</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12171190</Color>
+					<Text><![CDATA[Iterations completed:]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>240</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[getCurrentIteration() > 0]]></VisibleCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12042869</Color>
+					<Text><![CDATA[?]]></Text>
+					<TextCode><![CDATA[format(getNumberOfCompletedIterations())]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>50</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12566464</Color>
+					<Text><![CDATA[Parameters]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>0</Id>
+					<Name><![CDATA[line]]></Name>
+					<X>40</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-12566464</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>210</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text4]]></Name>
+					<X>50</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12171190</Color>
+					<Text><![CDATA[initialSpeedMean]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text5]]></Name>
+					<X>240</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[getCurrentIteration() > 0]]></VisibleCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12042869</Color>
+					<Text><![CDATA[?]]></Text>
+					<TextCode><![CDATA[format( initialSpeedMean )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>0</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>40</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>210</Width>
+					<Height>30</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-657931</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text6]]></Name>
+					<X>50</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12171190</Color>
+					<Text><![CDATA[initialMassMean]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text7]]></Name>
+					<X>240</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[getCurrentIteration() > 0]]></VisibleCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12042869</Color>
+					<Text><![CDATA[?]]></Text>
+					<TextCode><![CDATA[format( initialMassMean )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text8]]></Name>
+					<X>50</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12171190</Color>
+					<Text><![CDATA[initialVisionMean]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text9]]></Name>
+					<X>240</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[getCurrentIteration() > 0]]></VisibleCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12042869</Color>
+					<Text><![CDATA[?]]></Text>
+					<TextCode><![CDATA[format( initialVisionMean )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+			</Presentation>
+
+			<AllowParallelEvaluations>true</AllowParallelEvaluations>
+			<UseFreeformParameters>true</UseFreeformParameters>
+			<NumberOfRuns>100</NumberOfRuns>
+			<FreeformParamValue>	
+				<Id>1602531656741</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1602531656754</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1602531656767</Id>
+			</FreeformParamValue>
+			<RangeVariationParamValue>	
+				<Id>1602531656741</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1602531656754</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1602531656767</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
+				<InitialDate><![CDATA[1599350400000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1599371400000]]></FinalDate>	
+				<FinalTime><![CDATA[21000.0]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[TP : ParametersVariation]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>false</UseReplication>
+				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<ReplicationPerIteration>10</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>	
 	</Experiments>
 	<ModelResources>
 		<Resource>
@@ -2847,6 +3465,10 @@ for (Blob blob : blobsOnWay) {
 		</Resource>
 		<Resource>
 			<Path><![CDATA[3d/sphere.dae]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[C:/Users/lucas/Desktop/Runs.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
