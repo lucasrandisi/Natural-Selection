@@ -1974,6 +1974,7 @@ else {
 				<PackageName><![CDATA[tp]]></PackageName>
 				<ClassName><![CDATA[Eatable]]></ClassName>
 			</ExtendsReference>
+			<StartupCode><![CDATA[moveRandom();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1599425878769</Id>
@@ -2072,18 +2073,6 @@ else {
 					<Id>1600050319545</Id>
 					<Name><![CDATA[foodTarget]]></Name>
 					<X>50</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[Eatable]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1600117879841</Id>
-					<Name><![CDATA[closestFood]]></Name>
-					<X>50</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2357,7 +2346,7 @@ else {
 					<Action><![CDATA[if (main.food.size() != 0) {
 	double distance;
 
-	closestFood = null;
+	Eatable closestFood = null;
 	double closestDistance = this.vision;
 	
 	
@@ -2388,37 +2377,6 @@ else {
 	}
 }]]></Action>
 				</Event>
-				<Event>
-					<Id>1600120371650</Id>
-					<Name><![CDATA[foodTargetNull]]></Name>
-					<X>230</X><Y>280</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="condition" Mode="occuresOnce">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</Timeout>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
-						</Rate>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1600156800000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-						</RecurrenceCode>
-						<Condition><![CDATA[foodTarget == null]]></Condition>
-					</Properties>
-					<Action><![CDATA[this.moveTo(Math.random() * 600, Math.random() * 500);]]></Action>
-				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -2440,14 +2398,12 @@ this.foodTarget.addBlobOnWay(this);]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602614149867</Id>
 					<Name><![CDATA[onArriveToTarget]]></Name>
-					<X>390</X><Y>280</Y>
+					<X>390</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[this.foodTargetNull.restart();
-
-if (foodTarget != null) {
+					<Body><![CDATA[if (foodTarget != null) {
 	if (foodTarget instanceof Food) {
 		this.currentEnergy += ((Food)foodTarget).energy;
 	}
@@ -2456,7 +2412,9 @@ if (foodTarget != null) {
 	}
 	
 	foodTarget.consumed();
-}]]></Body>
+}
+
+this.moveRandom();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -2482,6 +2440,18 @@ if (foodTarget != null) {
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[this.currentEnergy = 0;
 this.foodTarget = null;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1602813816376</Id>
+					<Name><![CDATA[moveRandom]]></Name>
+					<X>390</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[this.moveTo(Math.random() * 600, Math.random() * 500);]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
