@@ -136,7 +136,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[20]]></Code>
+							<Code><![CDATA[100]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -350,7 +350,7 @@
 				<Event>
 					<Id>1602800099710</Id>
 					<Name><![CDATA[reportTime]]></Name>
-					<X>1010</X><Y>-360</Y>
+					<X>1010</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -377,7 +377,8 @@
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[setActualRow();
-writeReport();]]></Action>
+writeSheepsReport();
+writeWolvesReport();]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -481,8 +482,12 @@ for (Wolf wolf : wolvesToRemove) {
 double mutationPercentage;
 
 for (Sheep sheep : this.sheeps) {
-	if (sheep.currentEnergy >= sheep.energyToReplicate) {
+	if (sheep.currentEnergy > sheep.energyToSurvive) {
+		double cant = sheep.currentEnergy / sheep.energyToReplicate;
+		
+		for (int i=1; i <= cant ; i++) {
 			sheepsToReplicate.add(sheep);
+		}	
 	}
 	
 	// restablecer energía y food target
@@ -538,14 +543,14 @@ for (Sheep sheep : sheepsToReplicate) {
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602800163793</Id>
-					<Name><![CDATA[writeReport]]></Name>
-					<X>1010</X><Y>-330</Y>
+					<Name><![CDATA[writeSheepsReport]]></Name>
+					<X>1010</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[// Write run number
-reportFile.setCellValue(
+sheepsReportFile.setCellValue(
 	actualRow, 
 	sheetNumber,
 	actualRow,
@@ -554,7 +559,7 @@ reportFile.setCellValue(
 
 
 // Write Speed
-reportFile.setCellValue(
+sheepsReportFile.setCellValue(
 	sheeps.averageSpeed(),
 	sheetNumber,
 	actualRow,
@@ -562,7 +567,7 @@ reportFile.setCellValue(
 );
 
 // Write Mass
-reportFile.setCellValue(
+sheepsReportFile.setCellValue(
 	sheeps.averageMass(),
 	sheetNumber,
 	actualRow,
@@ -570,7 +575,7 @@ reportFile.setCellValue(
 );
 
 // Write Vision
-reportFile.setCellValue(
+sheepsReportFile.setCellValue(
 	sheeps.averageVision(),
 	sheetNumber,
 	actualRow,
@@ -579,7 +584,7 @@ reportFile.setCellValue(
 
 
 // Write Population
-reportFile.setCellValue(
+sheepsReportFile.setCellValue(
 	sheeps.size(),
 	sheetNumber,
 	actualRow,
@@ -592,15 +597,15 @@ reportFile.setCellValue(
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1602803139564</Id>
 					<Name><![CDATA[setActualRow]]></Name>
-					<X>1010</X><Y>-300</Y>
+					<X>1010</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[int lastRow = reportFile.getLastRowNum(sheetNumber);
+					<Body><![CDATA[int lastRow = sheepsReportFile.getLastRowNum(sheetNumber);
 
 if (lastRow == 1) {
-	if (reportFile.cellExists(sheetNumber, 1, 1)) {
+	if (sheepsReportFile.cellExists(sheetNumber, 1, 1)) {
 		actualRow = 2;
 	}
 	else {
@@ -678,11 +683,63 @@ for (Wolf wolf : wolvesToReplicate) {
 	}
 }]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1603570132346</Id>
+					<Name><![CDATA[writeWolvesReport]]></Name>
+					<X>1010</X><Y>-270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// Write run number
+wolvesReportFile.setCellValue(
+	actualRow, 
+	sheetNumber,
+	actualRow,
+	runColumn
+);
+
+
+// Write Speed
+wolvesReportFile.setCellValue(
+	wolves.averageSpeed(),
+	sheetNumber,
+	actualRow,
+	speedColumn
+);
+
+// Write Mass
+wolvesReportFile.setCellValue(
+	wolves.averageMass(),
+	sheetNumber,
+	actualRow,
+	massColumn
+);
+
+// Write Vision
+wolvesReportFile.setCellValue(
+	wolves.averageVision(),
+	sheetNumber,
+	actualRow,
+	visionColumn
+);
+
+
+// Write Population
+wolvesReportFile.setCellValue(
+	wolves.size(),
+	sheetNumber,
+	actualRow,
+	populationColumn
+);]]></Body>
+				</Function>
 			</Functions>
 			<Connectivity>
 				<ExcelFile>
 					<Id>1602799303248</Id>
-					<Name><![CDATA[reportFile]]></Name>
+					<Name><![CDATA[sheepsReportFile]]></Name>
 					<X>1010</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -690,7 +747,23 @@ for (Wolf wolf : wolvesToReplicate) {
 					<ShowLabel>true</ShowLabel>
 					<ResourceReference>
 						<PackageName><![CDATA[tp]]></PackageName>
-						<ClassName><![CDATA[C:/Users/lucas/Desktop/Runs.xlsx]]></ClassName>
+						<ClassName><![CDATA[C:/Users/lucas/Desktop/sheeps.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>true</SaveOnDispose>
+				</ExcelFile>
+				<ExcelFile>
+					<Id>1603570213949</Id>
+					<Name><![CDATA[wolvesReportFile]]></Name>
+					<X>1010</X><Y>-360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[tp]]></PackageName>
+						<ClassName><![CDATA[C:/Users/lucas/Desktop/wolves.xlsx]]></ClassName>
 					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>true</LoadOnStartup>
@@ -759,7 +832,7 @@ for (Wolf wolf : wolvesToReplicate) {
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(1, 10)]]></Code>
+								<Code><![CDATA[normal(3, 10)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -778,12 +851,12 @@ for (Wolf wolf : wolvesToReplicate) {
 							<Name><![CDATA[ratioToConsume]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[energy]]></Name>
+							<Name><![CDATA[energyWhenEated]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
-						<Code><![CDATA[10]]></Code>
+						<Code><![CDATA[30]]></Code>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<StatisticsItem>
@@ -805,10 +878,6 @@ for (Wolf wolf : wolvesToReplicate) {
 						<Condition><![CDATA[]]></Condition>
 					</StatisticsItem>
 					<InEnvironment>true</InEnvironment>	
-					<InitialSpeedCode Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-					</InitialSpeedCode>
 					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
 					<XCode Class="CodeValue">
 						<Code><![CDATA[Math.random() * 200]]></Code>
@@ -865,12 +934,12 @@ for (Wolf wolf : wolvesToReplicate) {
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[energy]]></Name>
+							<Name><![CDATA[energyWhenEated]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[100]]></Code>
+								<Code><![CDATA[10]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -939,7 +1008,7 @@ for (Wolf wolf : wolvesToReplicate) {
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[energy]]></Name>
+							<Name><![CDATA[energyWhenEated]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
@@ -1040,7 +1109,7 @@ for (Wolf wolf : wolvesToReplicate) {
 							<Name><![CDATA[energyToReplicate]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[energy]]></Name>
+							<Name><![CDATA[energyWhenEated]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[ratioToConsume]]></Name>
@@ -1153,7 +1222,7 @@ for (Wolf wolf : wolvesToReplicate) {
 							<Name><![CDATA[ratioToConsume]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[energy]]></Name>
+							<Name><![CDATA[energyWhenEated]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
@@ -2023,7 +2092,7 @@ for (Wolf wolf : wolvesToReplicate) {
 				<Rectangle>
 					<Id>1602799532127</Id>
 					<Name><![CDATA[rectangle]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>-10</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2164,13 +2233,14 @@ for (Wolf wolf : wolvesToReplicate) {
 					<Name><![CDATA[ratioToConsume]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[energy]]></Name>
+					<Name><![CDATA[energyWhenEated]]></Name>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[mass]]></Name>
 				</Parameter>
 			</Parameters>
-			<StartupCode><![CDATA[moveRandom();]]></StartupCode>
+			<StartupCode><![CDATA[this.initializeEnergyToReplicate();
+moveRandom();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1599425878769</Id>
@@ -2268,7 +2338,7 @@ for (Wolf wolf : wolvesToReplicate) {
 				<Event>
 					<Id>1600050456440</Id>
 					<Name><![CDATA[foodScanner]]></Name>
-					<X>560</X><Y>230</Y>
+					<X>600</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2318,6 +2388,20 @@ for (Wolf wolf : wolvesToReplicate) {
 }]]></Action>
 				</Event>
 			</Events>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1603575129398</Id>
+					<Name><![CDATA[initializeEnergyToReplicate]]></Name>
+					<X>360</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[this.energyToReplicate = this.energyToSurvive * 1.5;]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1599425878766</Id>
@@ -2428,13 +2512,13 @@ for (Wolf wolf : wolvesToReplicate) {
 			</ExtendsReference>
 			<Parameters>
 				<Parameter>
-					<Name><![CDATA[energy]]></Name>
+					<Name><![CDATA[energyWhenEated]]></Name>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[mass]]></Name>
 				</Parameter>
 			</Parameters>
-			<StartupCode><![CDATA[this.setEnergy();]]></StartupCode>
+			<StartupCode><![CDATA[this.initializeEnergyWhenEated();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1599425981910</Id>
@@ -2532,13 +2616,13 @@ for (Wolf wolf : wolvesToReplicate) {
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1603074840861</Id>
-					<Name><![CDATA[setEnergy]]></Name>
-					<X>320</X><Y>30</Y>
+					<Name><![CDATA[initializeEnergyWhenEated]]></Name>
+					<X>360</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[this.energy = this.mass * 300;]]></Body>
+					<Body><![CDATA[this.energyWhenEated = this.mass * 30;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -2748,7 +2832,7 @@ for (Wolf wolf : wolvesToReplicate) {
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1602816758558</Id>
-					<Name><![CDATA[energy]]></Name>
+					<Name><![CDATA[energyWhenEated]]></Name>
 					<X>210</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2923,13 +3007,14 @@ for (Animal animal : animalsOnWay) {
 					<Name><![CDATA[ratioToConsume]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[energy]]></Name>
+					<Name><![CDATA[energyWhenEated]]></Name>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[mass]]></Name>
 				</Parameter>
 			</Parameters>
-			<StartupCode><![CDATA[moveRandom();]]></StartupCode>
+			<StartupCode><![CDATA[this.initializeEnergyToReplicate();
+moveRandom();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1602815458858</Id>
@@ -3027,7 +3112,7 @@ for (Animal animal : animalsOnWay) {
 				<Event>
 					<Id>1602816992717</Id>
 					<Name><![CDATA[foodScanner]]></Name>
-					<X>560</X><Y>230</Y>
+					<X>600</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3080,6 +3165,20 @@ for (Animal animal : animalsOnWay) {
 }]]></Action>
 				</Event>
 			</Events>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1603575122008</Id>
+					<Name><![CDATA[initializeEnergyToReplicate]]></Name>
+					<X>360</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[this.energyToReplicate = this.energyToSurvive * 8;]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1602815458855</Id>
@@ -3194,14 +3293,15 @@ for (Animal animal : animalsOnWay) {
 			</ExtendsReference>
 			<Parameters>
 				<Parameter>
-					<Name><![CDATA[energy]]></Name>
+					<Name><![CDATA[energyWhenEated]]></Name>
 				</Parameter>
 				<Parameter>
 					<Name><![CDATA[mass]]></Name>
 				</Parameter>
 			</Parameters>
-			<StartupCode><![CDATA[this.initializeEnergy();
-this.initializeSpeed();]]></StartupCode>
+			<StartupCode><![CDATA[this.initializeEnergyWhenEated();
+this.initializeSpeed();
+this.initializeEnergyToSurvive();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1602815933263</Id>
@@ -3298,7 +3398,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1602816837618</Id>
 					<Name><![CDATA[foodTarget]]></Name>
-					<X>560</X><Y>190</Y>
+					<X>600</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3310,7 +3410,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034763</Id>
 					<Name><![CDATA[speed]]></Name>
-					<X>310</X><Y>30</Y>
+					<X>340</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3331,7 +3431,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034766</Id>
 					<Name><![CDATA[currentEnergy]]></Name>
-					<X>410</X><Y>30</Y>
+					<X>440</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3355,7 +3455,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034769</Id>
 					<Name><![CDATA[vision]]></Name>
-					<X>310</X><Y>70</Y>
+					<X>340</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3376,7 +3476,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034775</Id>
 					<Name><![CDATA[energyToSurvive]]></Name>
-					<X>410</X><Y>70</Y>
+					<X>440</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3385,9 +3485,6 @@ this.initializeSpeed();]]></StartupCode>
 						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.5 * this.mass * pow(this.speed, 2) + this.vision]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1602816034773</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -3400,7 +3497,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034778</Id>
 					<Name><![CDATA[probMutation]]></Name>
-					<X>560</X><Y>30</Y>
+					<X>590</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3424,7 +3521,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034781</Id>
 					<Name><![CDATA[mutationTreshold]]></Name>
-					<X>560</X><Y>70</Y>
+					<X>590</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3448,7 +3545,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034784</Id>
 					<Name><![CDATA[energyToReplicate]]></Name>
-					<X>410</X><Y>110</Y>
+					<X>440</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3457,9 +3554,6 @@ this.initializeSpeed();]]></StartupCode>
 						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[this.energyToSurvive * 1.5]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1602816034782</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -3472,7 +3566,7 @@ this.initializeSpeed();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1602816034790</Id>
 					<Name><![CDATA[ratioToConsume]]></Name>
-					<X>560</X><Y>110</Y>
+					<X>590</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3557,7 +3651,7 @@ this.foodTarget = null;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[if (foodTarget != null) {
-	this.currentEnergy += foodTarget.energy;
+	this.currentEnergy += foodTarget.energyWhenEated;
 
 	foodTarget.consumed();
 }
@@ -3568,25 +3662,37 @@ this.moveRandom();]]></Body>
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1603074692056</Id>
-					<Name><![CDATA[initializeEnergy]]></Name>
-					<X>360</X><Y>230</Y>
+					<Name><![CDATA[initializeEnergyWhenEated]]></Name>
+					<X>360</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[this.energy = this.mass * 20;]]></Body>
+					<Body><![CDATA[this.energyWhenEated = this.mass * 40;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1603075807390</Id>
 					<Name><![CDATA[initializeSpeed]]></Name>
-					<X>360</X><Y>270</Y>
+					<X>360</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[this.setSpeed(this.speed);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1603212549534</Id>
+					<Name><![CDATA[initializeEnergyToSurvive]]></Name>
+					<X>360</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[this.energyToSurvive = 0.5 * this.mass * pow(this.speed, 2) + this.vision;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -3769,11 +3875,15 @@ this.moveRandom();]]></Body>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[C:/Users/lucas/Desktop/Runs.xlsx]]></Path>
+			<Path><![CDATA[3d/cow.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[3d/cow.dae]]></Path>
+			<Path><![CDATA[C:/Users/lucas/Desktop/sheeps.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[C:/Users/lucas/Desktop/wolves.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
