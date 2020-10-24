@@ -626,7 +626,7 @@ else {
 					<ShowLabel>true</ShowLabel>
 					<ResourceReference>
 						<PackageName><![CDATA[tp]]></PackageName>
-						<ClassName><![CDATA[C:/Users/lucas/Desktop/Runs.xlsx]]></ClassName>
+						<ClassName><![CDATA[C:/Users/lucas/Desktop/blobs.xlsx]]></ClassName>
 					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>true</LoadOnStartup>
@@ -3438,7 +3438,7 @@ for (Blob blob : blobsOnWay) {
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[C:/Users/lucas/Desktop/Runs.xlsx]]></Path>
+			<Path><![CDATA[C:/Users/lucas/Desktop/blobs.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
