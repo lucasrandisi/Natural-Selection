@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.6.0.202008201438" AlpVersion="8.5.7">
 <Model>
 	<Id>1599424741472</Id>
-	<Name><![CDATA[TP]]></Name>
+	<Name><![CDATA[Predator]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[tp]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -136,7 +136,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[100]]></Code>
+							<Code><![CDATA[40]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -631,7 +631,16 @@ double mutationPercentage;
 
 for (Wolf wolf : this.wolves) {
 	if (wolf.currentEnergy >= wolf.energyToReplicate) {
+		wolvesToReplicate.add(wolf);
+		
+		/*
+		double cant = wolf.currentEnergy / wolf.energyToReplicate;
+		
+		for (int i=1; i <= cant; i++) {
 			wolvesToReplicate.add(wolf);
+		}
+		*/
+		
 	}
 	
 	// restablecer energía y food target
@@ -747,7 +756,7 @@ wolvesReportFile.setCellValue(
 					<ShowLabel>true</ShowLabel>
 					<ResourceReference>
 						<PackageName><![CDATA[tp]]></PackageName>
-						<ClassName><![CDATA[C:/Users/lucas/Desktop/sheeps.xlsx]]></ClassName>
+						<ClassName><![CDATA[C:/Users/lucas/Desktop/Modelo Alternativo Reportes/sheeps.xlsx]]></ClassName>
 					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>true</LoadOnStartup>
@@ -763,7 +772,7 @@ wolvesReportFile.setCellValue(
 					<ShowLabel>true</ShowLabel>
 					<ResourceReference>
 						<PackageName><![CDATA[tp]]></PackageName>
-						<ClassName><![CDATA[C:/Users/lucas/Desktop/wolves.xlsx]]></ClassName>
+						<ClassName><![CDATA[C:/Users/lucas/Desktop/Modelo Alternativo Reportes/wolves.xlsx]]></ClassName>
 					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>true</LoadOnStartup>
@@ -817,7 +826,7 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[speed]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(1, 10)]]></Code>
+								<Code><![CDATA[normal(0, 10)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -826,13 +835,13 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[vision]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(7.5, 75)]]></Code>
+								<Code><![CDATA[normal(7.5, 85)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(3, 10)]]></Code>
+								<Code><![CDATA[normal(1, 10)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -856,7 +865,7 @@ wolvesReportFile.setCellValue(
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
-						<Code><![CDATA[30]]></Code>
+						<Code><![CDATA[15]]></Code>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<StatisticsItem>
@@ -1078,7 +1087,7 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[speed]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(1, 10)]]></Code>
+								<Code><![CDATA[normal(0, 10)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1093,7 +1102,7 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(1, 10)]]></Code>
+								<Code><![CDATA[normal(0, 12.5)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1117,7 +1126,7 @@ wolvesReportFile.setCellValue(
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
-						<Code><![CDATA[1]]></Code>
+						<Code><![CDATA[10]]></Code>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<StatisticsItem>
@@ -2161,7 +2170,7 @@ wolvesReportFile.setCellValue(
 					<Id>1599425914682</Id>
 					<Name><![CDATA[sheeps_presentation]]></Name>
 					<X>340</X><Y>190</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -2180,10 +2189,10 @@ wolvesReportFile.setCellValue(
 					<Id>1602815458935</Id>
 					<Name><![CDATA[wolves_presentation]]></Name>
 					<X>340</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
@@ -3138,28 +3147,38 @@ moveRandom();]]></StartupCode>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[if (main.food.size() != 0) {
+					<Action><![CDATA[if (main.food.size() != 0 && this.currentEnergy <= this.energyToReplicate) {
 	double distance;
 
-	Sheep closestSheep = null;
+	Eatable closestEatable = null;
 	double closestDistance = this.vision;
 	
 	
 	for (Sheep sheep : main.sheeps) {
-		if (sheep.mass > this.mass * this.ratioToConsume) {
+		if (sheep.mass * this.ratioToConsume > this.mass) {
 			continue;
 		}	
+		
 		distance = distanceTo(sheep);
 	
 		if (distance < closestDistance) {
-			closestSheep = sheep;
+			closestEatable = sheep;
+			closestDistance = distance;
+		}
+	}
+	
+	for (Food food : main.food) {
+		distance = distanceTo(food);
+	
+		if (distance < closestDistance) {
+			closestEatable = food;
 			closestDistance = distance;
 		}
 	}
 				
 	// Si encontró algo dentro del rango
-	if (closestSheep != null) {
-		foodTarget = closestSheep;
+	if (closestEatable != null) {
+		foodTarget = closestEatable;
 		this.getNearestFood();
 	}
 }]]></Action>
@@ -3176,7 +3195,7 @@ moveRandom();]]></StartupCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[this.energyToReplicate = this.energyToSurvive * 8;]]></Body>
+					<Body><![CDATA[this.energyToReplicate = this.energyToSurvive * 1.5;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -3576,7 +3595,7 @@ this.initializeEnergyToSurvive();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1.5]]></Code>
+							<Code><![CDATA[1.1]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1602816034788</Id>
@@ -3668,7 +3687,7 @@ this.moveRandom();]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[this.energyWhenEated = this.mass * 40;]]></Body>
+					<Body><![CDATA[this.energyWhenEated = this.mass * 30;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3879,11 +3898,11 @@ this.moveRandom();]]></Body>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[C:/Users/lucas/Desktop/sheeps.xlsx]]></Path>
+			<Path><![CDATA[C:/Users/lucas/Desktop/Modelo Alternativo Reportes/sheeps.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[C:/Users/lucas/Desktop/wolves.xlsx]]></Path>
+			<Path><![CDATA[C:/Users/lucas/Desktop/Modelo Alternativo Reportes/wolves.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
