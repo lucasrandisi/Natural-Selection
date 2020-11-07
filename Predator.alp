@@ -136,7 +136,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[40]]></Code>
+							<Code><![CDATA[50]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -367,7 +367,7 @@
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1602835200000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[18000]]></Code>
+							<Code><![CDATA[3800]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
@@ -376,9 +376,11 @@
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[setActualRow();
-writeSheepsReport();
-writeWolvesReport();]]></Action>
+					<Action><![CDATA[if (this.sheeps.size() != 0 ) {
+	setActualRow();
+	writeSheepsReport();
+	writeWolvesReport();
+}]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -442,15 +444,43 @@ for (Sheep sheep : sheepsToRemove) {
 	this.remove_sheeps(sheep);	
 }
 
+/*
+if (sheepsToRemove.size() == this.sheeps.size()) {
+	for (int i=1; i<=15; i++) {
+		Sheep newSheep = this.add_sheeps();
+		
+		newSheep.speed = this.sheeps.averageSpeed() * (1 + newSheep.mutationTreshold);
+		newSheep.mass = this.sheeps.averageMass() * (1 + newSheep.mutationTreshold);
+		newSheep.vision = this.sheeps.averageVision() * (1 + newSheep.mutationTreshold);
+	}
+}
+*/
+
+
 for (Wolf wolf : this.wolves) {
 	if (wolf.currentEnergy < wolf.energyToSurvive) {
 		wolvesToRemove.add(wolf);
 	}
 }
 
+if (wolvesToRemove.size() == this.wolves.size()) {
+	int cant = max(1, this.sheeps.size() / 4);
+
+	for (int i=1; i<=cant ; i++) {
+		Wolf newWolf = this.add_wolves();
+		
+		newWolf.speed = this.wolves.averageSpeed() * (1 + newWolf.mutationTreshold);
+		newWolf.mass = this.wolves.averageMass() * (1 + newWolf.mutationTreshold);
+		newWolf.vision = this.wolves.averageVision() * (1 + newWolf.mutationTreshold);
+	}
+}
+
 for (Wolf wolf : wolvesToRemove) {
 	this.remove_wolves(wolf);	
-}]]></Body>
+}
+
+
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -631,16 +661,13 @@ double mutationPercentage;
 
 for (Wolf wolf : this.wolves) {
 	if (wolf.currentEnergy >= wolf.energyToReplicate) {
-		wolvesToReplicate.add(wolf);
+		//wolvesToReplicate.add(wolf);
 		
-		/*
 		double cant = wolf.currentEnergy / wolf.energyToReplicate;
 		
 		for (int i=1; i <= cant; i++) {
 			wolvesToReplicate.add(wolf);
 		}
-		*/
-		
 	}
 	
 	// restablecer energía y food target
@@ -667,7 +694,8 @@ for (Wolf wolf : wolvesToReplicate) {
 			
 	// mass mutation
 	if (Math.random() <= wolf.probMutation) {
-		 mutationPercentage = Math.random() * wolf.mutationTreshold;
+		mutationPercentage = Math.random() * wolf.mutationTreshold;
+		
 		
 		// adicionar o restar
 		if (Math.random() > 0.5) {
@@ -826,7 +854,7 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[speed]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(0, 10)]]></Code>
+								<Code><![CDATA[normal(1.5, 10)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -835,13 +863,13 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[vision]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(7.5, 85)]]></Code>
+								<Code><![CDATA[normal(8.5, 85)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(1, 10)]]></Code>
+								<Code><![CDATA[normal(1.5, 10)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -857,15 +885,12 @@ wolvesReportFile.setCellValue(
 							<Name><![CDATA[energyToReplicate]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[ratioToConsume]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[energyWhenEated]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
-						<Code><![CDATA[15]]></Code>
+						<Code><![CDATA[8]]></Code>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<StatisticsItem>
@@ -1087,7 +1112,7 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[speed]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(0, 10)]]></Code>
+								<Code><![CDATA[normal(0, 8)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1102,7 +1127,7 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[mass]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[normal(0, 12.5)]]></Code>
+								<Code><![CDATA[normal(0, 11)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1123,10 +1148,16 @@ wolvesReportFile.setCellValue(
 						<Parameter>
 							<Name><![CDATA[ratioToConsume]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[ratioToChase]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[ratioToDetect]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
-						<Code><![CDATA[10]]></Code>
+						<Code><![CDATA[2]]></Code>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<StatisticsItem>
@@ -1226,9 +1257,6 @@ wolvesReportFile.setCellValue(
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[energyToReplicate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[ratioToConsume]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[energyWhenEated]]></Name>
@@ -2239,9 +2267,6 @@ wolvesReportFile.setCellValue(
 					<Name><![CDATA[energyToReplicate]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[ratioToConsume]]></Name>
-				</Parameter>
-				<Parameter>
 					<Name><![CDATA[energyWhenEated]]></Name>
 				</Parameter>
 				<Parameter>
@@ -2631,7 +2656,7 @@ moveRandom();]]></StartupCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[this.energyWhenEated = this.mass * 30;]]></Body>
+					<Body><![CDATA[this.energyWhenEated = 250; ]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -3013,9 +3038,6 @@ for (Animal animal : animalsOnWay) {
 					<Name><![CDATA[energyToReplicate]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[ratioToConsume]]></Name>
-				</Parameter>
-				<Parameter>
 					<Name><![CDATA[energyWhenEated]]></Name>
 				</Parameter>
 				<Parameter>
@@ -3117,6 +3139,80 @@ moveRandom();]]></StartupCode>
 			</ScaleRuler>
 			<CurrentLevel>1602815458859</CurrentLevel>
 			<ConnectionsId>1602815458855</ConnectionsId>
+			<Variables>
+				<Variable Class="Parameter">
+					<Id>1604702009721</Id>
+					<Name><![CDATA[ratioToConsume]]></Name>
+					<X>740</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1.5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1604702009719</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1604702042609</Id>
+					<Name><![CDATA[ratioToChase]]></Name>
+					<X>740</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1.25]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1604702042607</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1604704700338</Id>
+					<Name><![CDATA[ratioToDetect]]></Name>
+					<X>740</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1.5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1604704700336</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
 			<Events>
 				<Event>
 					<Id>1602816992717</Id>
@@ -3147,7 +3243,7 @@ moveRandom();]]></StartupCode>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[if (main.food.size() != 0 && this.currentEnergy <= this.energyToReplicate) {
+					<Action><![CDATA[if (main.food.size() != 0) {
 	double distance;
 
 	Eatable closestEatable = null;
@@ -3155,7 +3251,9 @@ moveRandom();]]></StartupCode>
 	
 	
 	for (Sheep sheep : main.sheeps) {
-		if (sheep.mass * this.ratioToConsume > this.mass) {
+		if (sheep.mass > this.mass * this.ratioToConsume ||
+		sheep.speed > this.speed * this.ratioToChase ||
+		sheep.vision > this.vision * this.ratioToDetect) {
 			continue;
 		}	
 		
@@ -3167,6 +3265,7 @@ moveRandom();]]></StartupCode>
 		}
 	}
 	
+	/*
 	for (Food food : main.food) {
 		distance = distanceTo(food);
 	
@@ -3175,6 +3274,7 @@ moveRandom();]]></StartupCode>
 			closestDistance = distance;
 		}
 	}
+	*/
 				
 	// Si encontró algo dentro del rango
 	if (closestEatable != null) {
@@ -3582,30 +3682,6 @@ this.initializeEnergyToSurvive();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
-				<Variable Class="Parameter">
-					<Id>1602816034790</Id>
-					<Name><![CDATA[ratioToConsume]]></Name>
-					<X>590</X><Y>110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1.1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1602816034788</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -3687,7 +3763,7 @@ this.moveRandom();]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[this.energyWhenEated = this.mass * 30;]]></Body>
+					<Body><![CDATA[this.energyWhenEated = this.mass * 25;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
